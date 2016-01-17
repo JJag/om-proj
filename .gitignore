@@ -1,0 +1,9 @@
+### SBT
+
+target/
+.cache
+
+
+### IDEA
+*.iml
+.idea/
