@@ -1,6 +1,9 @@
-package alg
+package main
 
 import java.io.File
+
+import classifier.CodebookClassifier
+import vq.Lbg
 
 import scala.io.Source
 import scala.util.Random
@@ -26,10 +29,13 @@ object Main {
 
 
     println("Wczytano dane")
-    println(trainingSet.size)
+    println(s"trainingSet.size = ${trainingSet.size}")
+
+
+    val lbg = new Lbg(512)
     val codebooks: Map[String, Seq[Mfcc]] = trainingSet.map { case (k, features) =>
       println("mama")
-      (k, Lbg(512, features))
+      (k, lbg.quantize(features))
     }
     println("wtf")
     val classifier = new CodebookClassifier(codebooks)

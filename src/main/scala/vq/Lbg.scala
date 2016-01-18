@@ -1,12 +1,12 @@
-package alg
+package vq
 
 import util.VectorUtils._
 
-object Lbg {
+class Lbg(K: Int) extends VQAlg {
 
   type Vec = Vector[Float]
 
-  def apply(K: Int, s: Seq[Vector[Float]]): List[Vector[Float]] = {
+  override def quantize(s: Seq[Vector[Float]]): List[Vector[Float]] = {
     val initCodeword = mean(s)
     var codebook: List[Vec] = List(initCodeword)
     var k = 1
